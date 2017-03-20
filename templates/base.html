@@ -5,6 +5,12 @@
     <title>BlueBlog</title>
 </head>
 <body>
+    {% block header %}
+    <ul>
+        <li><a href="">Log in</a></li>
+        <li><a href="">Log out</a></li>
+        <li><a href="{% url 'user_registration' %}">Register Account</a></li>
+    </ul>
     {% block content %}
     {% endblock %}
 </body>
