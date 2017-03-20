@@ -1,9 +1,13 @@
 from django.core.urlresolvers import reverse
 from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseForbidden
 from django.utils.text import slugify
 from django.views.generic import CreateView
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 from blog.forms import BlogForm
+from blog.models import Blog
 
 
 class NewBlogView(CreateView):
@@ -17,3 +21,11 @@ class NewBlogView(CreateView):
 
         blog_obj.save()
         return HttpResponseRedirect(reverse('home'))
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        user = request.user
+        if Blog.objects.filter(owner=user).exists():
+            return HttpResponseForbidden('You can not create more than one blogs per account')
+        else:
+            return super(NewBlogView, self).dispatch(request, *args, **kwargs)
