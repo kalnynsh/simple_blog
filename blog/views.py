@@ -44,7 +44,10 @@ class HomeView(TemplateView):
         if self.request.user.is_authenticated():
             if Blog.objects.filter(owner=self.request.user).exists():
                 ctx['has_blog'] = True
-                ctx['blog'] = Blog.objects.get(owner=self.request.user)
+                blog = Blog.objects.get(owner=self.request.user)
+
+                ctx['blog'] = blog
+                ctx['blog_post'] = BlogPost.objects.filter(blog=blog)
 
         return ctx
 
