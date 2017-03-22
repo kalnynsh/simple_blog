@@ -10,6 +10,8 @@ from django.views.generic import UpdateView
 
 from blog.forms import BlogForm
 from blog.models import Blog
+from blog.forms import BlogPostForm
+from blog.models import BlogPost
 
 
 class NewBlogView(CreateView):
@@ -56,3 +58,22 @@ class UpdateBlogView(UpdateView):
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super(UpdateBlogView, self).dispatch(request, *args, **kwargs)
+
+
+class NewBlogPostView(CreateView):
+    form_class = BlogPostForm
+    template_name = 'blog_post.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(NewBlogPostView, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        blog_post_obj = form.save(commit=False)
+        blog_post_obj.blog = Blog.objects.get(owner=self.request.user)
+        blog_post_obj.slug = slugify(blog_post_obj.title)
+        blog_post_obj.is_published = True
+
+        blog_post_obj.save()
+
+        return HttpResponseRedirect(reverse('home'))
