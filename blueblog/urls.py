@@ -22,6 +22,7 @@ from django.contrib.auth.views import logout
 from blog.views import NewBlogView
 from blog.views import HomeView
 from blog.views import UpdateBlogView
+from blog.views import NewBlogPostView
 
 
 urlpatterns = [
@@ -32,4 +33,5 @@ urlpatterns = [
     url(r'^new-user/$', UserRegistrationView.as_view(), name='user_registration'),
     url(r'^blog/new/$', NewBlogView.as_view(), name='new-blog'),
     url(r'^blog/(?P<pk>\d+)/update/$', UpdateBlogView.as_view(), name='update-blog'),
+    url(r'^blog/post/new/$', NewBlogPostView.as_view(), name='new-blog-post'),
 ]
