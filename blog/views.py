@@ -47,7 +47,7 @@ class HomeView(TemplateView):
                 blog = Blog.objects.get(owner=self.request.user)
 
                 ctx['blog'] = blog
-                ctx['blog_post'] = BlogPost.objects.filter(blog=blog)
+                ctx['blog_posts'] = BlogPost.objects.filter(blog=blog)
 
         return ctx
 
