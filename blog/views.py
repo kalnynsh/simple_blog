@@ -94,6 +94,6 @@ class UpdateBlogPostView(UpdateView):
         return super(UpdateBlogPostView, self).dispatch(request, *args, **kwargs)
 
 
-class BlogPostDetailView(DetailView):
+class BlogPostDetailsView(DetailView):
     model = BlogPost
     template_name = 'blog_post_details.html'
