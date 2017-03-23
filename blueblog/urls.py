@@ -37,5 +37,5 @@ urlpatterns = [
     url(r'^blog/(?P<pk>\d+)/update/$', UpdateBlogView.as_view(), name='update-blog'),
     url(r'^blog/post/new/$', NewBlogPostView.as_view(), name='new-blog-post'),
     url(r'^blog/post/(?P<pk>\d+)/update/$', UpdateBlogPostView.as_view(), name='update-blog-post'),
-    url(r'^blog/post/(?P<pk>\d+/$', BlogPostDetailsView.as_view(), name='blog-post-details'),
+    url(r'^blog/post/(?P<pk>\d+)/$', BlogPostDetailsView.as_view(), name='blog-post-details'),
 ]
