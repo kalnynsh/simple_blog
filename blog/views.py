@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.views.generic import UpdateView
+from django.views.generic import DetailView
 
 from blog.forms import BlogForm
 from blog.models import Blog
@@ -91,3 +92,8 @@ class UpdateBlogPostView(UpdateView):
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super(UpdateBlogPostView, self).dispatch(request, *args, **kwargs)
+
+
+class BlogPostDetailView(DetailView):
+    model = BlogPost
+    template_name = 'blog_post_detail.html'
