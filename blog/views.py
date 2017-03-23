@@ -96,4 +96,4 @@ class UpdateBlogPostView(UpdateView):
 
 class BlogPostDetailView(DetailView):
     model = BlogPost
-    template_name = 'blog_post_detail.html'
+    template_name = 'blog_post_details.html'
