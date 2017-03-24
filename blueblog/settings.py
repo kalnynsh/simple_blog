@@ -83,16 +83,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blueblog_db',
         'USER': 'blueblog_user',
-        'PASSWORD': 'password',
-        'HOST': '/var/run/mysqld/mysqld.sock',
-        'PORT': '3306',
+        'PASSWORD': 's1hw3pfq8',
+        'HOST': 'localhost',  # '/var/run/mysqld/mysqld.sock'
+        'PORT': '',  # '3306'
         'OPTIONS': {
             'sql_mode': 'STRICT_TRANS_TABLES',
         },
         'TEST': {
             'NAME': 'test_db',
             'USER': 'test_user',
-            'PASSWORD': '',
+            'PASSWORD': 'kZnW5burbBYEEYAl',
         },
     }
 }
