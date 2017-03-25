@@ -25,6 +25,7 @@ from blog.views import UpdateBlogView
 from blog.views import NewBlogPostView
 from blog.views import UpdateBlogPostView
 from blog.views import BlogPostDetailsView
+from blog.views import SharePostWithBlog
 
 
 urlpatterns = [
@@ -38,4 +39,6 @@ urlpatterns = [
     url(r'^blog/post/new/$', NewBlogPostView.as_view(), name='new-blog-post'),
     url(r'^blog/post/(?P<pk>\d+)/update/$', UpdateBlogPostView.as_view(), name='update-blog-post'),
     url(r'^blog/post/(?P<pk>\d+)/$', BlogPostDetailsView.as_view(), name='blog-post-details'),
+    url(r'^blog/post/(?P<pk>\d+)/$', SharePostWithBlog.as_view(), name='share-blog-post-with-blog'),
+
 ]
