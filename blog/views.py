@@ -51,6 +51,7 @@ class HomeView(TemplateView):
 
                 ctx['blog'] = blog
                 ctx['blog_posts'] = BlogPost.objects.filter(blog=blog)
+                ctx['shared_posts'] = blog.shared_posts.all()
 
         return ctx
 
