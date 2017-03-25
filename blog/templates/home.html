@@ -9,11 +9,13 @@
     {% endif %}
 {% endblock logged_in_nav %}
 {% block content %}
+    {% if blog_posts %}
     <h1>Blog Posts</h1>
     <ul>
         {% for post in blog_posts %}
         <li><a href="{% url 'blog-post-details' pk=post.pk %}">
-            {{ post.title }}</a> | <a href="{% url 'update-blog-post' pk=post.pk %}">Edit Post</a>
+            {{ post.title }}</a> | <a href="{% url 'update-blog-post' pk=post.pk %}">Edit Post</a> |
+             <a href="{% url 'share-blog-post' pk=post.pk %}">Share Post</a>
         </li>
         {% endfor %}
     </ul>
