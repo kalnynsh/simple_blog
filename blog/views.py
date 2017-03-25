@@ -141,3 +141,19 @@ class SharePostWithBlog(View):
         blog_post.shared_to.add(blog)
 
         return HttpResponseRedirect(reverse('home'))
+
+
+class StopSharingPostWithBlog(View):
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(StopSharingPostWithBlog, self).dispatch(request, *args, **kwargs)
+
+    def get(self, request, post_pk, blog_pk):
+        blog_post = BlogPost.objects.get(pk=post_pk)
+        if blog_post.blog.owner != request.user:
+            return HttpResponseForbidden('You can only stop sharing posts that you created')
+
+        blog = Blog.objects.get(pk=blog_pk)
+        blog_post.shared_to.remove(blog)
+
+        return HttpResponseRedirect(reverse('home'))
