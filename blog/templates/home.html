@@ -19,4 +19,15 @@
         </li>
         {% endfor %}
     </ul>
+
+    {% if shared_posts %}
+        <h2>Shared Blog Posts</h2>
+        <ul>
+            {% for post in shared_posts %}
+            <li>
+                <a href="{% url 'blog-post-details' pk=post.pk %}">{{ post.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock content %}
