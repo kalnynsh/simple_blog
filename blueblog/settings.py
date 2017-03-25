@@ -84,10 +84,11 @@ DATABASES = {
         'NAME': 'blueblog_db',
         'USER': 'blueblog_user',
         'PASSWORD': 's1hw3pfq8',
-        'HOST': 'localhost',  # '/var/run/mysqld/mysqld.sock'
-        'PORT': '',  # '3306'
+        'HOST': 'localhost',    # '/var/run/mysqld/mysqld.sock'
+        'PORT': '',             # '3306'
         'OPTIONS': {
             'sql_mode': 'STRICT_TRANS_TABLES',
+            # 'read_default_file': os.path.join(BASE_DIR, 'blueblog/my_db.cnf'),
         },
         'TEST': {
             'NAME': 'test_db',
